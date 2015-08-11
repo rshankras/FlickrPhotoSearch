@@ -1,0 +1,16 @@
+PODS:
+  - Alamofire (1.3.0)
+  - Haneke (1.0.1)
+  - SwiftyJSON (2.2.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - Haneke
+  - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: 220403a8d5840e0b4c946a6fbaf209dbca124282
+  Haneke: d60be8b96b228633b24708dd153169d6849d6f78
+  SwiftyJSON: ae2d0a3d68025d136602a33c4ee215091ced3e33
+
+COCOAPODS: 0.38.2
