@@ -47,7 +47,7 @@ class PhotosViewController: UIViewController, UISearchBarDelegate, FlickrPhotoDo
     // MARK:- SearchPhotos
     
     func searchForPhotos() {
-        service.makeServiceCall(searchBar.text)
+        service.makeServiceCall(searchBar.text!)
     }
     
     // MARK:- Flickr Photo Download
@@ -72,7 +72,7 @@ extension PhotosViewController: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PhotoCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PhotoCell
         let photo = photos[indexPath.row]
         cell.imageView.frame.size = cell.frame.size
         cell.imageView.hnk_setImageFromURL(photo.imageURL)

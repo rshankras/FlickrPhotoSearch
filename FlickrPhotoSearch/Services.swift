@@ -9,29 +9,29 @@
 import Alamofire
 import SwiftyJSON
 
-protocol FlickrPhotoDownloadDelegate {
+protocol FlickrPhotoDownloadDelegate: class {
     func finishedDownloading(photos:[Photo])
 }
 
 class Services {
     
-    let API_KEY = "your_flickr_api_key"
+    let API_KEY = "YOUR_API_KEY"
     let URL = "https://api.flickr.com/services/rest/"
     let METHOD = "flickr.photos.search"
     let FORMAT_TYPE:String = "json"
     let JSON_CALLBACK:Int = 1
     let PRIVACY_FILTER:Int = 1
     
-    var delegate:FlickrPhotoDownloadDelegate?
+    weak var delegate:FlickrPhotoDownloadDelegate?
     
     // MARK:- Service Call
     
     func makeServiceCall(searchText: String) {
-        
-        Alamofire.request(.GET, URL, parameters:  ["method": METHOD, "api_key": API_KEY, "tags":searchText,"privacy_filter":PRIVACY_FILTER, "format":FORMAT_TYPE, "nojsoncallback": JSON_CALLBACK])
-           .responseJSON { (request, response, data, error) in
-            if data != nil {
-                let jsonData:JSON = JSON(data!)
+        Alamofire.request(.GET, URL, parameters: ["method": METHOD, "api_key": API_KEY, "tags":searchText,"privacy_filter":PRIVACY_FILTER, "format":FORMAT_TYPE, "nojsoncallback": JSON_CALLBACK]).responseJSON { (response) -> Void in
+            
+            switch response.result {
+            case .Success(let data):
+                let jsonData:JSON = JSON(data)
                 let photosDict = jsonData["photos"]
                 let photoArray = photosDict["photo"]
                 var photos = [Photo]()
@@ -46,10 +46,11 @@ class Services {
                     photos.append(photo)
                 }
                 self.delegate?.finishedDownloading(photos)
-            } else {
-                println(error)
+            case .Failure(let error):
+                print("Request failed with error: \(error)")
             }
+            
+            
         }
-        
     }
 }
