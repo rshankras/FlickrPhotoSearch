@@ -1,25 +1,26 @@
 PODS:
-  - Alamofire (3.2.0)
-  - Haneke (1.0.1)
-  - SwiftyJSON (2.3.2)
+  - Alamofire (5.9.1)
+  - SDWebImage (5.19.7):
+    - SDWebImage/Core (= 5.19.7)
+  - SDWebImage/Core (5.19.7)
+  - SwiftyJSON (5.0.2)
 
 DEPENDENCIES:
-  - Alamofire (~> 3.0)
-  - Haneke
-  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+  - Alamofire
+  - SDWebImage
+  - SwiftyJSON
 
-EXTERNAL SOURCES:
-  SwiftyJSON:
-    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
-
-CHECKOUT OPTIONS:
-  SwiftyJSON:
-    :commit: 42bdb102d2624b143c07850ebdc1537d5b6579b6
-    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - SDWebImage
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 4da478599fccddff361205c8929333d7fe18dceb
-  Haneke: d60be8b96b228633b24708dd153169d6849d6f78
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
+  SDWebImage: 8a6b7b160b4d710e2a22b6900e25301075c34cb3
+  SwiftyJSON: f5b1bf1cd8dd53cd25887ac0eabcfd92301c6a5a
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: f3594e65511aee52d050eebbb2bb77180c3b5df5
+
+COCOAPODS: 1.15.2

@@ -1,4 +1,12 @@
-use_frameworks!
-pod 'Alamofire' , '~>3.0'
-pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
-pod 'Haneke'
+# Specify the platform and version
+platform :ios, '15.0' # Adjust the version as needed
+
+# Specify your project's target
+target 'FlickrPhotoSearch' do
+  use_frameworks!
+  
+  # List your pods
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
+  pod 'SDWebImage'
+end

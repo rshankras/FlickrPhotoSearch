@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Haneke
+import SDWebImage
 
 class DetailViewController: UIViewController {
     
@@ -16,15 +16,15 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if let photo = photo {
-            
-            imageView = UIImageView(frame: CGRectMake(0, 0, 320, 320))
-            imageView?.hnk_setImageFromURL(photo.imageURL)
-            view.addSubview(imageView!)
-            
-            let tapGestureRecogonizer = UITapGestureRecognizer(target: self, action: Selector("close"))
-            view.addGestureRecognizer(tapGestureRecogonizer)
+            imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 320, height: 320))
+            if let url = URL(string: photo.largeImageURL) {
+                imageView?.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder"))
+                view.addSubview(imageView!)
+                
+                let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(close))
+                view.addGestureRecognizer(tapGestureRecognizer)
+            }
         }
     }
     
@@ -45,7 +45,7 @@ class DetailViewController: UIViewController {
     
     // MARK:- close
     
-    func close() {
-        dismissViewControllerAnimated(true, completion: nil)
+    @objc func close() {
+        dismiss(animated: true, completion: nil)
     }
 }
